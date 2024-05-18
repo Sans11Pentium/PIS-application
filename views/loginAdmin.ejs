@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Home Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+    <link href="/css/loginAdmin.css" rel="stylesheet">
+</head>
+<body>
+    <div class="navbar">
+        <div class="nav-info">
+            <img class="nav-info-img" src="/utils/drdo_logo_0.png" alt="logo">
+        </div>
+        <div class="nav-options">
+            <div class="search"> 
+                <input type="text" class="search-input" placeholder="Search">
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-body">
+        <div class="main-body-img"></div>
+        <div class="main-body-routes">
+            <p class="main-body-img-text">Solid State Physics Laboratory, New Delhi</p>
+            <p style="font-size: 1.3rem;font-weight: 600;">Login Admin</p>
+            <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
+            <div class="adminLoginform">
+                <form class="form-ele" method="post" action="/admin/show">
+                    <input required placeholder="Enter admin ID" class="inpt" type="number" name="id" id="id">
+                    <input required placeholder="Enter username" class="inpt" type="text" name="usnm">
+                    <input required placeholder="Enter password" class="inpt" name="pswd" type="password">
+                    <button class="btn" type="submit">Login</button>
+                </form>
+            </div>
+            <p class="ques" style="color:white">Don't have an admin account? <a href="/admin/signup" style="text-decoration: underline;color:#0E86D4;">Sign up instead</a></p>
+            
+        </div>
+    </div>
+    <div class="footer"></div>
+</body>
+</html>

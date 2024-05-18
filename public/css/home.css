@@ -1,0 +1,145 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #121212;
+}
+.navbar{
+    height:120px;
+    width:100%;
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: space-between;
+}
+.nav-info-img{
+    margin:10px 0 0 10px;
+}
+.main-body{
+    width:100%;
+    /* filter: blur(3px); */
+    height:600px; 
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+}
+.main-body-img{
+    height:100%;
+    width:55%;
+    background-image: url("/utils/missile.jpg");
+    background-repeat: no-repeat;
+    /* margin-top: 1rem; */
+    border-radius: 14px;
+    margin:10px;
+    text-align: center;
+    /* object-position: center;
+    object-fit: cover;
+    background-position: left center; */
+}
+
+.nav-options{
+    width:30%;
+}
+.main-body-img-text{
+    font-size:1.6rem;
+    font-weight: 700;
+    color:#afc7dc;
+    text-align: center;
+}
+.search-input{
+    text-decoration: none;
+    background-color: transparent;
+    height:30px;
+    width:70%;
+    border:1.4px solid rgb(208, 202, 202);
+    border-radius: 14px;
+    color:white;
+    margin-top: 35px;
+}
+::placeholder{
+    color:white;
+    padding-left:6px;
+}
+.main-body-routes{
+    background: #141E30;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:40%;
+    height: 100%;
+    color:white;
+    border-radius: 14px;
+    margin:10px;
+}
+.btn{
+    text-align: center;
+    text-decoration: none;
+    width:200px;
+    height:50px;
+    text-decoration: none;
+    background-color: #0E86D4;
+    color: white;
+    border:none;
+    border-radius: 14px;
+    font-weight: 600;
+    margin:10px 0 10px 0;
+    font-size:1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width:1100px){
+    .main-body{
+        flex-direction: column;
+        align-items: center;
+    }
+    .main-body-img{
+        opacity: 0;
+    }
+    .main-body-routes{
+        width: 90%;
+        /* height:60%; */
+    }
+    .routes{
+        width:80%;
+    }
+}
+@media(max-width:840px){
+    .main-body-img-text{
+        font-size: 1rem;
+    }
+    .routes{
+        width:80%;
+    }
+}
+@media(max-width:630px){
+    .search-input{
+        opacity: 0;
+    }
+}
+@media(max-width:425px){
+    .nav-info img{
+        content: url("/utils/drdo-logo-wob.png");
+        height:90%;
+        width:100%;
+    }
+    .navbar{
+        background: -webkit-linear-gradient(to right, #0f75ce, #064d5e);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1181e3, #1464ae); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+}
+.footer{
+    height:100px;
+    background-color: #121212;
+}
+@media(max-width:475px){
+    .ques{
+        font-size: 0.8rem;
+    }
+}

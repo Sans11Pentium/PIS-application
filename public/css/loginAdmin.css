@@ -1,0 +1,36 @@
+.main-body{
+    height:600px;
+}
+.adminLoginform{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.main-body-routes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+}
+.inpt{
+    font-family: "Poppins", sans-serif;
+    padding-left: 10px;
+    text-decoration: none;
+    background-color: transparent;
+    height:30px;
+    width:80%;
+    border:1.4px solid rgb(208, 202, 202);
+    border-radius: 14px;
+    color:white;
+    margin-top: 35px;
+}
+.form-ele{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
