@@ -70,18 +70,34 @@ app.post('/admin/show', (req, res) => {
 app.get("/admin/signup",(req,res)=>{
     res.render("signupAdmin.ejs");
 });
-app.get("/staff/signup",(req,res)=>{
-    res.render("signupStaff.ejs");
-});
-app.get("/staff",(req,res)=>{
-    res.render("loginStaff.ejs");
-});
+// app.get("/staff/signup",(req,res)=>{
+//     res.render("signupStaff.ejs");
+// });
+// app.get("/staff",(req,res)=>{
+//     res.render("loginStaff.ejs");
+// });
 app.get("/admin",(req,res)=>{
     res.render("loginAdmin.ejs");
 });
 app.get("/",(req,res)=>{
-    res.render("home.ejs");
+    const q=`SELECT id,employee_id,first_name,middle_name,last_name,gender,job_title,work_phone,mobile_phone,work_email,department FROM EMPLOYEES;`;
+    try{
+        connection.query(q,(err,results)=>{
+            if(err) throw err;
+            const data=results;
+            // console.log(results);
+            // Render the studentPage.ejs with the data object
+            res.render("home.ejs", { data });
+        });
+        }
+        catch(err){
+            console.log(err);
+            res.send("some error , plz try again!");
+        }
+    console.log("home details showing");
 });
+    // res.render("home.ejs");
+// });
 app.listen(port,(req,res)=>{
     console.log("server is listening to port 8080");
 });

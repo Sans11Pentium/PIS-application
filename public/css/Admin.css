@@ -17,12 +17,13 @@
 }
 .inpt{
     font-family: "Poppins", sans-serif;
-    padding-left: 10px;
+    padding-left: 15px;
+    font-size:1.01rem;
     text-decoration: none;
     background-color: transparent;
     height:30px;
     width:80%;
-    border:1.4px solid rgb(208, 202, 202);
+    border:0.2px solid rgb(157, 152, 152);
     border-radius: 14px;
     color:white;
     margin-top: 35px;
@@ -33,4 +34,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.container{
+    flex: 1; /* Take up remaining space */
+    display: flex;
+    justify-content: center;
+    /* justify-content: space-around; */
+    margin: 10px;
 }

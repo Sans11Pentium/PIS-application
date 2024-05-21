@@ -1,35 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Home Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="/css/home.css" rel="stylesheet">
-</head>
-<body>
-    <div class="navbar">
-        <div class="nav-info">
-            <img class="nav-info-img" src="/utils/drdo_logo_0.png" alt="logo">
-        </div>
-        <div class="nav-options">
-            <div class="search"> 
-                <input type="text" class="search-input" placeholder="Search">
-            </div>
+<% layout("/layouts/boilerplate") %>
+<div class="main-body">
+    <div class="main-body-img"></div>
+    <div class="main-body-routes">
+        <p class="main-body-img-text">Solid State Physics Laboratory</p>
+        <p class="main-body-img-text">New Delhi</p>
+        <p style="font-size: 1.3rem; font-weight: 600;"></p>
+        <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
+        <a class="btn" href="/admin">Admin Login/SignUp</a>
+    </div>
+</div>
+
+<br>
+
+<div style="color: white;">
+    <div style="text-align: center;" class="new-updates">
+        <p style="color:#FF8300;font-size: 2rem;font-weight: 700;">New Updates for the month...<i style="margin-left:1rem" class="fa-solid fa-paperclip"></i></p>
+        <div class="updates-card">
+            <a>This month retirement</a>
+            <a>Birthday Greetings</a>
+            <a>New Joinings</a>
         </div>
     </div>
-    <div class="main-body">
-        <div class="main-body-img"></div>
-        <div class="main-body-routes">
-            <p class="main-body-img-text">Solid State Physics Laboratory, New Delhi</p>
-            <p style="font-size: 1.3rem;font-weight: 600;"></p>
-            <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
-            <a href="/admin" class="btn">Admin Login/SignUp</a>
-            <a href="/staff" class="btn">Staff Login/Signup</a>
+    <div class="emp-strength">
+        <h2 style="text-align: center;padding:0.8rem;">Employee Statistics</h2>
+        <div style="width: 50%; margin: auto;background-color: white;">
+            <canvas id="genderChart"></canvas>
         </div>
     </div>
-    <div class="footer"></div>
-</body>
-</html>
+    <div class="emp-list">
+        <h2 style="text-align: center;padding:0.8rem;">
+            List of Employees &nbsp; <i class="fa-solid fa-user"></i>
+        </h2>
+        <table border="black">
+            <tr>
+                <th>Id</th>
+                <th>Employee id</th>
+                <th>Name</th>
+                <th>Designation</th>
+                <th>Work Phone</th>
+                <th>Mobile Phone</th>
+                <th>Work email</th>
+                <th>Department</th>
+            </tr>
+            <%for(let emp of data){%>
+                <tr>
+                    <td><%=emp.id%></td>
+                    <td><%=emp.employee_id%></td>
+                    <td><%=emp.first_name%> <%=emp.middle_name%> <%=emp.last_name%></td>
+                    <td><%=emp.department%></td>
+                    <td><%=emp.work_phone%></td>
+                    <td><%=emp.mobile_phone%></td>
+                    <td><%=emp.work_email%></td>
+                    <td><%=emp.department%></td>
+                </tr>
+            <%}%>
+        </table>
+    </div>
+    <div class="sspl-options">
+        <ul>
+            <li>DRDS</li>
+            <li>DRTC</li>
+            <li>Admin/Allied Officer</li>
+            <li>Admin/Allied staff</li>
+            <li>Others</li>
+            <li>Ex-employees</li>
+            <li>Organisational flow</li>
+        </ul>
+    </div>
+</div>
