@@ -94,7 +94,7 @@ app.get("/",(req,res)=>{
             console.log(err);
             res.send("some error , plz try again!");
         }
-    console.log("home details showing");
+    //console.log("home details showing");
 });
     // res.render("home.ejs");
 // });

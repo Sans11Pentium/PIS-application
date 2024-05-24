@@ -13,24 +13,24 @@
 <br>
 
 <div style="color: white;">
-    <div style="text-align: center;" class="new-updates">
+    <div style="background-color: #54627B;text-align: center;" class="new-updates">
         <p style="color:#FF8300;font-size: 2rem;font-weight: 700;">New Updates for the month...<i style="margin-left:1rem" class="fa-solid fa-paperclip"></i></p>
         <div class="updates-card">
-            <a>This month retirement</a>
-            <a>Birthday Greetings</a>
-            <a>New Joinings</a>
+            <a>This month retirement &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
+            <a>Birthday Greetings &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
+            <a>New Joinings &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
         </div>
     </div>
     <div class="emp-strength">
-        <h2 style="text-align: center;padding:0.8rem;">Employee Statistics</h2>
-        <div style="width: 50%; margin: auto;background-color: white;">
+        <h1 style="text-align: center;padding:0.8rem;">Employee Statistics</h1>
+        <div style="width:45%;margin: auto;background-color: white;border-radius: 10px;">
             <canvas id="genderChart"></canvas>
         </div>
     </div>
+    <h2 style="text-align: center;padding:0.8rem;">
+        List of Employees &nbsp; <i class="fa-solid fa-user"></i>
+    </h2>
     <div class="emp-list">
-        <h2 style="text-align: center;padding:0.8rem;">
-            List of Employees &nbsp; <i class="fa-solid fa-user"></i>
-        </h2>
         <table border="black">
             <tr>
                 <th>Id</th>
@@ -56,15 +56,23 @@
             <%}%>
         </table>
     </div>
+    <br><br><br><br><br>
+    <h1 style="text-align:center;">Know your Organisation&nbsp;<i style="font-size:3rem;color:rgba(255, 255, 0, 0.749)" class="fa-solid fa-chart-simple"></i></h1>
     <div class="sspl-options">
-        <ul>
-            <li>DRDS</li>
-            <li>DRTC</li>
-            <li>Admin/Allied Officer</li>
-            <li>Admin/Allied staff</li>
-            <li>Others</li>
-            <li>Ex-employees</li>
-            <li>Organisational flow</li>
-        </ul>
+        <div class="sspl-options-first">
+            <ul style="list-style-type: none;">
+                <li id="home" class="chart-item" style="color:black;background-color: rgba(255, 255, 0, 0.749);">Home</li>
+                <li id="drds" class="chart-item">DRDS</li>
+                <li id="drtc" class="chart-item">DRTC</li>
+                <li id="admin_officer" class="chart-item">Admin/Allied Officer</li>
+                <li id="admin_staff" class="chart-item">Admin/Allied staff</li>
+                <li id="others" class="chart-item">Others</li>
+                <li id="ex_employees" class="chart-item">Ex-employees</li>
+                <li id="org_flow" class="chart-item">Organisational flow</li>
+            </ul>
+        </div>
+        <div class="sspl-options-stats">
+            <canvas style="background-color: white;border-radius: 10px;padding:3.5rem;" id="myChart" width="400" height="200"></canvas>
+        </div>
     </div>
 </div>

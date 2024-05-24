@@ -3,6 +3,8 @@ body{
     padding: 0;
     font-family: "Poppins", sans-serif;
     background-color: #121212;
+    /* background: -webkit-linear-gradient(to right, #121212, #141E30);  
+    background: linear-gradient(to right, #064d5e, #afc7dc0c);  */
 }
 .navbar{
     height:120px;
@@ -40,6 +42,11 @@ body{
 
 .nav-options{
     width:30%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .main-body-img-text{
     font-size:1.6rem;
@@ -198,6 +205,8 @@ body{
 
 .new-updates{
     margin-top: 4rem;
+    padding:2rem 0 3rem 0;
+    border-radius: 0 100em 0 100em;
 }
 .updates-card{
     /* width:30%; */
@@ -217,15 +226,17 @@ body{
 }
 .updates-card a:hover{
     background-color: #FF8300;
-    transform: scale(1.1);
     cursor: pointer;
-    border:2px solid white;
+    border:1.2px solid white;
 }
 
 .emp-strength{
-    margin:6rem 0 6rem 0;
+    margin:8rem 0 8rem 0;
 }
-
+.emp-list{
+    overflow: scroll;
+    height: 400px;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -248,4 +259,41 @@ tr:nth-child(even) {
 }
 tr:hover {
     background-color: #dddddd75;
+}
+
+.sspl-options{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    color:white;
+}
+.sspl-options ul{
+    width:100%;
+}
+.sspl-options li{
+    height:fit-content;
+    width:fit-content;
+    padding:1rem;
+    border:0.1px solid rgba(255, 255, 0, 0.779);
+    border-radius: 14px;
+    margin-bottom: 1rem;
+    width:100%;
+}
+.sspl-options li:hover{
+    background-color: rgba(255, 255, 0, 0.683);
+    color:black;
+    cursor: pointer;
+}
+.sspl-options-stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:1000px){
+    .sspl-options{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
