@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
     margin:0;
     padding: 0;
@@ -21,23 +26,17 @@ body{
 .main-body{
     flex:1;
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    margin: 10px;
+    justify-content:center;
+    margin: auto;
 }
 .main-body-img{
-    /* height:100%; */
     width:55%;
     object-fit: cover;
     background-image: url("/utils/missile.jpg");
     background-repeat: no-repeat;
-    /* margin-top: 1rem; */
     border-radius: 14px;
     margin:10px;
     text-align: center;
-    /* object-position: center;
-    object-fit: cover;
-    background-position: left center; */
 }
 
 .nav-options{
@@ -77,10 +76,10 @@ body{
     justify-content: center;
     align-items: center;
     width:40%;
-    /* height: 100%; */
     color:white;
     border-radius: 14px;
     margin:10px;
+    padding: 2.5rem 0 2.5rem 0;
 }
 .btn{
     text-align: center;
@@ -222,12 +221,14 @@ body{
     padding: 1rem;
     border-radius: 14px;
     border:1px solid #afc7dc;
+    color:white;
     margin-right: 1rem;
 }
 .updates-card a:hover{
     background-color: #FF8300;
     cursor: pointer;
     border:1.2px solid white;
+    color: white;
 }
 
 .emp-strength{

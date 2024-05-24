@@ -1,0 +1,10 @@
+.bday-container{
+    display: flex;
+    justify-content: center;
+    flex:1;
+    flex-wrap: wrap;
+}
+.card-body p{
+    text-align: center;
+    font-weight: 800;
+}

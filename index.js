@@ -60,7 +60,7 @@ app.post('/admin/show', (req, res) => {
             }
 
             // Render AdminPage.ejs with employee list
-            res.render('AdminPage.ejs', { emplist: empResults });
+            res.render('./routes/AdminPage.ejs', { emplist: empResults });
         });
     });
 });
@@ -68,16 +68,10 @@ app.post('/admin/show', (req, res) => {
 
 
 app.get("/admin/signup",(req,res)=>{
-    res.render("signupAdmin.ejs");
+    res.render("./routes/signupAdmin.ejs");
 });
-// app.get("/staff/signup",(req,res)=>{
-//     res.render("signupStaff.ejs");
-// });
-// app.get("/staff",(req,res)=>{
-//     res.render("loginStaff.ejs");
-// });
 app.get("/admin",(req,res)=>{
-    res.render("loginAdmin.ejs");
+    res.render("./routes/loginAdmin.ejs");
 });
 app.get("/",(req,res)=>{
     const q=`SELECT id,employee_id,first_name,middle_name,last_name,gender,job_title,work_phone,mobile_phone,work_email,department FROM EMPLOYEES;`;
@@ -85,9 +79,8 @@ app.get("/",(req,res)=>{
         connection.query(q,(err,results)=>{
             if(err) throw err;
             const data=results;
-            // console.log(results);
             // Render the studentPage.ejs with the data object
-            res.render("home.ejs", { data });
+            res.render("./routes/home.ejs", { data });
         });
         }
         catch(err){
@@ -96,8 +89,31 @@ app.get("/",(req,res)=>{
         }
     //console.log("home details showing");
 });
-    // res.render("home.ejs");
-// });
+app.get("/bday", (req, res) => {
+    const today = new Date();
+    const todayMonth = today.getMonth() + 1; // Months are zero-indexed, so add 1
+    const todayDay = today.getDate();
+
+    // console.log('Today:', todayMonth, todayDay);
+    connection.query(`SELECT * FROM employees WHERE MONTH(birthday) = ? AND DAY(birthday) = ?`, 
+        [todayMonth, todayDay], 
+        (err, results) => {
+            if (err) {
+                console.error('Error executing MySQL query:', err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+            // console.log('Query results:', results);
+            res.render('./routes/bday.ejs', { employees: results });
+        }
+    );
+});
+app.get("/new-join",(req,res)=>{
+    res.render('./routes/new-join.ejs');
+});
+app.get("/retire",(req,res)=>{
+    res.render('./routes/retire.ejs');
+});
 app.listen(port,(req,res)=>{
     console.log("server is listening to port 8080");
 });

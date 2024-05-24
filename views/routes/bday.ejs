@@ -1,0 +1,40 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link href="/css/bday.css" rel="stylesheet">
+<% layout("/layouts/boilerplate") %>
+<div class="card mb-3">
+    <img src="\utils\bday-bckgrnd.jpg" class="card-img-top" alt="...">
+</div>
+<div style="color:black" class="bday-container">
+    <%if(employees.length==0){%>
+        <h1>Oops! Seems like no one has birthday today</h1>
+        <img src="/utils/no-bday.jpeg" alt="no-bday">
+    <%}else{%>
+        <%for(let emp of employees){%>
+            <div class="bday-card">
+                <%if(emp.gender=="Female"){%>
+                    <div class="card" style="width: 18rem;background-color: #f3548c;">
+                        <h1></h1>
+                        <img src="/utils/female.webp" class="card-img-top" alt="female">
+                        <div class="card-body">
+                          <p class="card-text">
+                            <p><%=emp.employee_id%></p>
+                            <p><%=emp.first_name%> <%=emp.middle_name%> <%=emp.last_name%></p>
+                          </p>
+                        </div>
+                    </div>
+                <%}else{%>
+                    <div class="card" style="width: 18rem;background-color: #b294a8;">
+                        <h1></h1>
+                        <img src="/utils/male.webp" class="card-img-top" alt="male">
+                        <div class="card-body">
+                          <p class="card-text">
+                            <p><%=emp.employee_id%></p>
+                            <p><%=emp.first_name%> <%=emp.middle_name%> <%=emp.last_name%></p>
+                          </p>
+                        </div>
+                    </div>
+                <%}%>
+            </div>
+        <%}%>
+    <%}%>
+</div>
