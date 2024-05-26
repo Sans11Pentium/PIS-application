@@ -114,6 +114,21 @@ app.get("/new-join",(req,res)=>{
 app.get("/retire",(req,res)=>{
     res.render('./routes/retire.ejs');
 });
+app.get("/add",(req,res)=>{
+    res.render("./routes/AdminAdd.ejs");
+})
+app.get("/edit",(req,res)=>{
+    res.render("./routes/AdminEdit.ejs");
+})
+app.get("/delete",(req,res)=>{
+    res.render("./routes/AdminDelete.ejs");
+})
+app.get("/addgrp",(req,res)=>{
+    res.render("./routes/AdminAddGrp.ejs");
+})
+app.get("/correction",(req,res)=>{
+    res.render("./routes/AdminEmpCorr.ejs");
+})
 app.listen(port,(req,res)=>{
     console.log("server is listening to port 8080");
 });
