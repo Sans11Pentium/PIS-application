@@ -1,37 +1,37 @@
 <% layout("/layouts/adminLayout") %>
 <h2 style="text-align: center;">Add an Employee</h2> <br>
-<form class="row g-3">
-    <div class="col-md-4">
+<form class="row g-3" action="/add" method="post">
+    <!-- <div class="col-md-4">
       <label for="validationDefault01" class="form-label">Id</label>
-      <input type="number" class="form-control" id="validationDefault01" value="Mark" required>
+      <input name="emp[id]" type="number" class="form-control" id="validationDefault01" value="Mark" required>
     </div>
     <div class="col-md-4">
       <label for="validationDefault02" class="form-label">Employee id</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+      <input name="emp[employee_id]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[first_name]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Middle name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[middle_name]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[last_name]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Nationality</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[nationality]" type="number" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">birthday</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[birthday]" type="date" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Gender</label>
-        <select class="form-select" id="validationDefault02" required>
+        <select name="emp[Gender]"  class="form-select" id="validationDefault02" required>
             <option selected disabled value="">Choose...</option>
             <option>Male</option>
             <option>Female</option>
@@ -39,7 +39,7 @@
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Marital status</label>
-        <select class="form-select" id="validationDefault02" required>
+        <select name="emp[marital_status]" class="form-select" id="validationDefault02" required>
             <option selected disabled value="">Choose...</option>
             <option>Married</option>
             <option>Single</option>
@@ -50,155 +50,155 @@
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">sss_num</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[ssn_num]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-6">
       <label for="validationDefault03" class="form-label">nic_num</label>
-      <input type="text" class="form-control" id="validationDefault03" required>
+      <input name="emp[nic_num]" type="text" class="form-control" id="validationDefault03" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">other_id</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[other_ID]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Driving License</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[driving_license]" type="text" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Driving License Expiry date</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input name="emp[driving_license_exp_date]" type="date" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Employement status</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[employment_status]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Job Title</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[job_title]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Pay Grade</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[pay_grade]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Work station Id</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[work_station_id]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Address 1</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[address1]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[address2]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">City</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[city]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Country</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[country]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Province</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[province]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Postal code</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[postal_code]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Home Phone Number</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[home_phone]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Mobile Phone Number</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[mobile_phone]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Work Phone</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[work_phone]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Work Email</label>
-        <input type="email" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="email" name="emp[work_email]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Private email</label>
-        <input type="email" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="email" name="emp[private_email]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Joined date</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[joined_date]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Confirmation Date</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[confirmation_date]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Supervisor</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[supervisor]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Indirect Supervisor</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[indirect_supervisors]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Department</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[department]"  class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 1</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom1]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 2</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom2]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 3</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom3]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 4</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom4]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 5</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom5]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 6</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom6]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 7</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom7]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 8</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom8]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 9</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom9]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Custom 10</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[custom10]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Termination Date</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[termination_date]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Notes</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[notes]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Status</label>
-        <select class="form-select" id="validationDefault04" required>
+        <select name="emp[status]" class="form-select" id="validationDefault04" required>
             <option selected disabled value="">Choose...</option>
             <option>Active</option>
             <option>Terminated</option>
@@ -206,74 +206,75 @@
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Ethnicity</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[ethnicity]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Notes</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[notes]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Immigration status</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[immigration_status]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Approver 1</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[approver1]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Approver 2</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[approver2]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Approver 3</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[approver3]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">cadre</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[cadre]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Date of joining</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[joined_date]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">dopr</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[dopr]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Posting Place</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[posting_place]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Image path</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[image_path]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">remarks</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="text" name="emp[remarks]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Last Updated</label>
-        <input type="date" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="date" name="emp[lastUpdated]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Additional charge 1</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[additional_charge1]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Additional charge 2</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[additional_charge2]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Additional charge 3</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
+        <input type="number" name="emp[additional_charge3]" class="form-control" id="validationDefault02" value="Otto" required>
     </div>
     <div class="col-md-4">
         <label for="validationDefault02" class="form-label">Additional Member</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
+        <input type="text" name="emp[AdditionalMember]" class="form-control" id="validationDefault02" value="Otto" required>
+    </div> -->
+    <input type="text" name="emp[test]" id="test">
     <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Submit form</button>
     </div>
   </form>
 <!-- 
