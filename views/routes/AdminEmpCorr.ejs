@@ -1,47 +1,35 @@
 <% layout("/layouts/adminLayout") %>
-<h2 style="text-align: center;">Employee Correction</h2> <br>
-<form class="row g-3">
-    <div class="col-md-4">
-      <label for="validationDefault01" class="form-label">Id</label>
-      <input type="number" class="form-control" id="validationDefault01" value="Mark" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefault02" class="form-label">Employee id</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Middle name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-        <label for="validationDefault02" class="form-label">Nationality</label>
-        <input type="number" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-6">
-      <label for="validationDefault03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationDefault03" required>
-    </div>
-    <div class="col-md-3">
-      <label for="validationDefault04" class="form-label">State</label>
-      <select class="form-select" id="validationDefault04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <label for="validationDefault05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" required>
-    </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-  </form>
+<h2 style="text-align: center;">Employees Needing Corrections</h2>
 
+<% if (corrections.length === 0) { %>
+    <p>No employees needing corrections at the moment.</p>
+<% } else { %>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Employee ID</th>
+                <th>Correction Required</th>
+                <th>Date</th>
+                <th>Action</th>
+                <th>Once u r done, notify them!</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% corrections.forEach(correction => { %>
+                <tr>
+                    <td><%= correction.id %></td>
+                    <td><%= correction.employee_id %></td>
+                    <td><%= correction.correction_required %></td>
+                    <td><%= correction.date.toLocaleString() %></td>
+                    <td>
+                        <a href="/admin/edit/<%= correction.id %>" style="background-color: #a5c5ea;" class="btn">Edit</a>
+                    </td>
+                    <td>
+                      <a href="/admin/edit/<%= correction.id %>" style="background-color: #2662a5;color: white;" class="btn btn-primary">Mark as edited</a>
+                  </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } %>

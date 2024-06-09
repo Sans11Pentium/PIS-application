@@ -8,53 +8,30 @@ const connection = mysql.createConnection({
     password:"sans",
     multipleStatements: true,
 });
+const wrapAsync=require("../utils/wrapAsync.js");
+const adminController = require("../controllers/admin.js");
 
 //Add emp
-router.get("/add",(req,res)=>{
-    res.render("./routes/AdminAdd.ejs");
-})
-
-router.post("/add",(req,res) => {
-    let new_emp = req.body.emp;
-    console.log(new_emp);
-    req.flash("success","Employee added successfully!");
-    res.redirect("/add");
-})
+router.get("/add",adminController.renderAddEmpForm)
+router.post("/add",adminController.addEmp)
 
 //edit emp details
-router.get("/edit",(req,res)=>{
-    res.render("./routes/AdminEdit.ejs");
-})
-
-router.put("/edit",(req,res) => {
-
-})
+//render the form about whose details are to be edited
+router.get("/edit",adminController.renderEditForm)
+//on the basis of is obtained from above form, give edit form for that emp's details
+router.post("/edit", adminController.renderEditEmpDetails);
+//submit the above form and make changes in db
+router.put('/edit', adminController.editEmp);
 
 //delete an employee
-router.get("/delete",(req,res)=>{
-    res.render("./routes/AdminDelete.ejs");
-})
-
-router.delete("/delete", (req, res) => {
-
-})
+router.get("/delete",adminController.renderDeleteForm)
+router.delete("/delete", adminController.deleteEmp)
 
 //add a group
-router.get("/addgrp",(req,res)=>{
-    res.render("./routes/AdminAddGrp.ejs");
-})
-
-router.put("/addgrp", (req, res) => {
-
-})
+router.get("/addgrp",adminController.renderAddGrpForm)
+router.post("/addgrp", adminController.addGrp);
 
 //emp correction
-router.get("/correction",(req,res)=>{
-    res.render("./routes/AdminEmpCorr.ejs");
-})
-
-router.put("/correction", (req, res) => {
-
-})
+router.get('/correction', adminController.getCorrections);
 
 module.exports = router;

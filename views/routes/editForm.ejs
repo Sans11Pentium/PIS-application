@@ -1,0 +1,21 @@
+<% layout("/layouts/adminLayout") %>
+<h2 style="text-align: center;">Edit an Employee's details</h2> <br>
+<form class="row g-3 needs-validation" method="post" action="/admin/edit" novalidate>
+    <% const fields = [
+        {label: 'Enter Id', name: 'id', type: 'number'},
+        {label: 'Enter Employee id', name: 'employee_id', type: 'text'},
+        ]; %>
+    <div class="col-md-4 m-auto p-6">
+        <% fields.forEach((field, index) => { %>
+            <label for="field<%= index %>" class="form-label"><%= field.label %></label>
+            <input name="emp[<%= field.name %>]" type="<%= field.type %>" class="form-control" id="field<%= index %>" required>
+            <div class="invalid-feedback">
+                Please fill this field!
+            </div>
+        <% }) %>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" type="submit">Go to Edit</button>
+    </div>
+</form>
+<script src="/js/form_validation.js"></script>

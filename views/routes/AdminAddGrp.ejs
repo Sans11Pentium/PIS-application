@@ -1,45 +1,98 @@
 <% layout("/layouts/adminLayout") %>
 <h2 style="text-align: center;">Add a Group</h2> <br>
-<form class="row g-3">
-    <div class="col-md-4">
-      <label for="validationDefault01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefault02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-    </div>
-    <div class="col-md-4">
-      <label for="validationDefaultUsername" class="form-label">Username</label>
-      <div class="input-group">
-        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-        <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
-      </div>
+<form class="row g-3 needs-validation" method="post" action="/admin/addgrp" novalidate>
+    <div class="col-md-6">
+      <label for="id" class="form-label">Id</label>
+      <input value="0" name="id" type="number" class="form-control" id="id" required>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please provide a title.</div>
     </div>
     <div class="col-md-6">
-      <label for="validationDefault03" class="form-label">City</label>
-      <input type="text" class="form-control" id="validationDefault03" required>
+        <label for="title" class="form-label">Title</label>
+        <input name="title" type="text" class="form-control" id="title" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a title.</div>
     </div>
-    <div class="col-md-3">
-      <label for="validationDefault04" class="form-label">State</label>
-      <select class="form-select" id="validationDefault04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
+    <div class="col-md-6">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" class="form-control" id="description" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a description.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="address" class="form-label">Address</label>
+        <textarea name="address" class="form-control" id="address" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide an address.</div>
+    </div>
+    <div class="col-md-6">
+      <label for="type" class="form-label">Type</label>
+      <select name="type" class="form-select" id="type" required>
+          <option value="" selected disabled>Choose...</option>
+          <option value="Company">Company</option>
+          <option value="Head Office">Head Office</option>
+          <option value="Regional Office">Regional Office</option>
+          <option value="Department">Department</option>
+          <option value="Unit">Unit</option>
+          <option value="Sub Unit">Sub Unit</option>
+          <option value="Other">Other</option>
       </select>
+      <div class="valid-feedback">Looks good!</div>
+      <div class="invalid-feedback">Please select a type.</div>
+  </div>
+  
+    <div class="col-md-6">
+        <label for="country" class="form-label">Country(length allowed: 2)</label>
+        <input minlength="2" maxlength="2" name="country" type="text" class="form-control" id="country" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a country.</div>
     </div>
-    <div class="col-md-3">
-      <label for="validationDefault05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationDefault05" required>
+    <div class="col-md-6">
+        <label for="parent" class="form-label">Parent</label>
+        <input name="parent" type="number" class="form-control" id="parent" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a parent.</div>
     </div>
+    <div class="col-md-6">
+        <label for="timezone" class="form-label">Timezone(max length allowed: 100)</label>
+        <input value="Europe/ London" maxlength="100" name="timezone" type="text" class="form-control" id="timezone" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a timezone.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="heads" class="form-label">Heads(max length allowed: 255)</label>
+        <input maxlength="255" name="heads" type="text" class="form-control" id="heads" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide heads.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="GO" class="form-label">GO</label>
+        <input name="GO" type="number" class="form-control" id="GO" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide GO.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="DO" class="form-label">DO</label>
+        <input name="DO" type="number" class="form-control" id="DO" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide DO.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="TD" class="form-label">TD</label>
+        <input name="TD" type="number" class="form-control" id="TD" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide TD.</div>
+    </div>
+    <div class="col-md-6">
+        <label for="OIC" class="form-label">OIC</label>
+        <input name="OIC" type="number" class="form-control" id="OIC" required>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide OIC.</div>
+    </div>
+
     <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2" required>
-        <label class="form-check-label" for="invalidCheck2">
-          Agree to terms and conditions
-        </label>
-      </div>
+        <button class="btn btn-primary" type="submit">Add Group</button>
     </div>
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
-    </div>
-  </form>
+</form>
+
+<script src="/js/form_validation.js"></script>

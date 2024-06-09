@@ -153,6 +153,7 @@ body{
     }
 }
 .footer{
+    margin-bottom: 0rem;
     margin-top:5rem;
     height:12rem;
     background: #000428;  /* fallback for old browsers */
