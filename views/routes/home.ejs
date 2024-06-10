@@ -6,13 +6,13 @@
         <p class="main-body-img-text">New Delhi</p>
         <p style="font-size: 1.3rem; font-weight: 600;"></p>
         <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
-        <a class="btn" href="/login">Admin Login/SignUp</a>
+        <a class="btn btn-secondary" href="/login">Admin Login/SignUp</a>
     </div>
 </div>
 
 <br>
 
-<div style="color: white;">
+<div id="updates" style="color: white;">
     <div style="background-color: #54627B;text-align: center;" class="new-updates">
         <p style="color:#FF8300;font-size: 2rem;font-weight: 700;">New Updates for the month...<i style="margin-left:1rem" class="fa-solid fa-paperclip"></i></p>
         <div class="updates-card">
@@ -21,13 +21,13 @@
             <a href="/new-join">New Joinings &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
         </div>
     </div>
-    <div class="emp-strength">
+    <div id="emp-strength" class="emp-strength">
         <h1 style="text-align: center;padding:0.8rem;">Employee Statistics</h1>
         <div style="width:45%;margin: auto;background-color: white;border-radius: 10px;">
             <canvas id="genderChart"></canvas>
         </div>
     </div>
-    <h2 style="text-align: center;padding:0.8rem;">
+    <h2 id="emp-list" style="text-align: center;padding:0.8rem;">
         List of Employees &nbsp; <i class="fa-solid fa-user"></i>
     </h2>
     <div class="emp-list">
@@ -41,8 +41,32 @@
                 <th>Mobile Phone</th>
                 <th>Work email</th>
                 <th>Department</th>
+                <th>View</th>
             </tr>
             <%for(let emp of data){%>
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 style="color:black" class="modal-title fs-5" id="staticBackdropLabel">Employee's area</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div style="color:black" class="modal-body">
+                                <h3>Hi, hope you are doing well.</h3><br>
+                                <form class="needs-validation" action="/emp/show/:<%=emp.id%>">
+                                    <label class="form-label" for="pswd">Enter your password</label><br><br>
+                                    <input required class="form-control" type="password" name="password" id="pswd"><br><br>
+                                    <div class="invalid-feedback">Please provide password.</div>
+                                    <button type="submit" class="btn btn-primary">See ur details</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <tr>
                     <td><%=emp.id%></td>
                     <td><%=emp.employee_id%></td>
@@ -52,12 +76,13 @@
                     <td><%=emp.mobile_phone%></td>
                     <td><%=emp.work_email%></td>
                     <td><%=emp.department%></td>
+                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye"></i></button></td>
                 </tr>
             <%}%>
         </table>
     </div>
     <br><br><br><br><br>
-    <h1 style="text-align:center;">Know your Organisation&nbsp;<i style="font-size:3rem;color:rgba(255, 255, 0, 0.749)" class="fa-solid fa-chart-simple"></i></h1>
+    <h1 id="org" style="text-align:center;">Know your Organisation&nbsp;<i style="font-size:3rem;color:rgba(255, 255, 0, 0.749)" class="fa-solid fa-chart-simple"></i></h1>
     <div class="sspl-options">
         <div class="sspl-options-first">
             <ul style="list-style-type: none;">
@@ -76,3 +101,4 @@
         </div>
     </div>
 </div>
+<script src="/js/form_validation.js"></script>

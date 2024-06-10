@@ -1,4 +1,6 @@
-const mysql = require('mysql2');
+if(process.env.NODE_ENV != "production"){
+    require('dotenv').config();
+}
 const express=require("express");
 const app=express();
 const path=require("path");
@@ -26,13 +28,7 @@ app.use(express.urlencoded({extended:true}));
 const indexController = require("./controllers/index.js");
 
 const port=8080;
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'drdo_pis',
-    password:"sans",
-    multipleStatements: true,
-});
+const connection = require("./routes/dbConnect.js");
 
 const sessionOptions = {
     secret: "mysupersecretcode",

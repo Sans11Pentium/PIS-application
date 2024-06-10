@@ -1,11 +1,4 @@
-const mysql = require('mysql2');
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'drdo_pis',
-    password:"sans",
-    multipleStatements: true,
-});
+const connection = require("../routes/dbConnect");
 
 //add emp
 //GET

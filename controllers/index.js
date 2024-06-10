@@ -1,11 +1,4 @@
-const mysql = require('mysql2');
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'drdo_pis',
-    password:"sans",
-    multipleStatements: true,
-});
+const connection = require("../routes/dbConnect");
 
 module.exports.showEmp = (req,res)=>{
     const q=`SELECT id,employee_id,first_name,middle_name,last_name,gender,job_title,work_phone,mobile_phone,work_email,department FROM EMPLOYEES;`;
