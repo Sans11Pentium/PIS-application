@@ -3,11 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 body{
     margin:0;
     padding: 0;
     font-family: "Poppins", sans-serif;
     background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
 }
 .navbar{
     height:120px;
@@ -150,19 +159,17 @@ body{
         background: linear-gradient(to right, #1181e3, #1464ae); 
     }
 }
-.footer{
-    margin-bottom: 0rem;
-    margin-top:5rem;
-    height:12rem;
-    background: #000428; 
-    background: -webkit-linear-gradient(to right, #004e92, #000428);  
-    background: linear-gradient(to right, #004e92, #000428); 
-    display: flex;
-    justify-content: space-between;
+.footer {
+    width: 100%;
+    margin-bottom: 0;
+    height: 12rem;
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
 }
 .socials{
     margin-top: 2rem;
@@ -235,7 +242,7 @@ body{
 }
 .emp-list{
     overflow: scroll;
-    height: 400px;
+    height: 700px;
 }
 table {
     width: 100%;
@@ -254,18 +261,30 @@ th {
     color: white;
 }
 tr{
-    background-color: #f2f2f26d;
+    background-color: #f2f2f2b5;
     color: black;
 }
 tr:hover {
-    background-color: #dddddda8;
+    background-color: #dddddde7;
+}
+
+.line{
+    height:1rem;
+    width:90%;
+    background-image: url("/utils/Blue-horizontal-line.png");
+    background-repeat: no-repeat;
 }
 
 .sspl-options{
+    background-color: #064d5e;
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     color:white;
+    margin: auto;
+    align-items: center;
+    padding :3rem;
+    border-radius: 14px 0 14px 0;
 }
 .sspl-options ul{
     width:100%;
@@ -296,4 +315,21 @@ tr:hover {
         align-items: center;
         justify-content: center;
     }
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+        scale:0.8;
+    }
+    to{
+        opacity: 1;
+        scale:1;
+    }
+}
+
+.box{
+    animation: fade linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 40%;
 }

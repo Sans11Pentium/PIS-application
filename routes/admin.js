@@ -25,6 +25,9 @@ router.route("/addgrp")
 .post(adminController.addGrp);
 
 //emp correction
+router.route("/correction/:id")
+.get(adminController.makeCorrection);
+
 router.route("/correction")
 .get(adminController.getCorrections);
 

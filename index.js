@@ -15,6 +15,7 @@ const newJoinRouter = require("./routes/new-join.js");
 const bdayRouter = require("./routes/bday.js");
 const retireRouter = require("./routes/retire.js");
 const adminRouter = require("./routes/admin.js");
+const empRouter = require("./routes/employee.js");
 
 app.engine("ejs",ejsMate);
 
@@ -43,23 +44,29 @@ const sessionOptions = {
 
 app.use(session(sessionOptions));
 app.use(flash());
-// app.use((req,res,next) => {
-//     console.log(req.url);
-//     console.log(req.originalMethod);
-//     next();
-// })
-
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success"); // store the flash msg in locals of response object
     res.locals.error = req.flash("error");
     // res.locals.currUser = req.user;
     next();
 })
+// app.use((req,res,next) => {
+//     if(req.url != "/"){
+//         console.log("not on homepage");
+//         nav_below.style.display = "none";
+//     }
+//     console.log(req.url);
+//     console.log(req.originalMethod);
+//     next();
+// })
+
+
 
 app.use("/bday", bdayRouter);
 app.use("/retire", retireRouter);
 app.use("/new-join", newJoinRouter);
 app.use("/admin", adminRouter);
+app.use("/emp", empRouter);
 
 app.post("/signup",(req,res)=>{
     const { id, usnm, pswd } = req.body;
@@ -75,15 +82,18 @@ app.post('/login', (req, res) => {
     const adminQuery = 'SELECT * FROM adminpasswords WHERE id = ? AND username = ? AND password = ?';
     connection.query(adminQuery, [id, usnm, pswd], (err, results) =>{
         if (err) {
-            res.redirect("loginAdmin.ejs",'Error checking admin credentials');
+            req.flash("error",'Error checking admin credentials');
+            return res.redirect("/login");
         }
         if (results.length === 0) {
-            res.redirect("loginAdmin.ejs",'Unauthorized: Invalid credentials');
+            req.flash("error", 'Unauthorized: Invalid credentials');
+            return res.redirect("/login");
         }
         const empQuery = 'SELECT * FROM emplist';
         connection.query(empQuery, (err, empResults) =>{
             if (err) {
-                return res.status(500).send('Error querying employee list');
+                req.flash("error", 'Error querying employee list');
+                return res.redirect("/login");
             }
             res.render('./routes/AdminPage.ejs', { emplist: empResults });
         })

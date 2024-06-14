@@ -5,15 +5,15 @@
         <p class="main-body-img-text">Solid State Physics Laboratory</p>
         <p class="main-body-img-text">New Delhi</p>
         <p style="font-size: 1.3rem; font-weight: 600;"></p>
-        <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
+        <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350"><br>
         <a class="btn btn-secondary" href="/login">Admin Login/SignUp</a>
     </div>
 </div>
 
-<br>
+<br><br><br>
 
 <div id="updates" style="color: white;">
-    <div style="background-color: #54627B;text-align: center;" class="new-updates">
+    <div style="background-color: #54627B;text-align: center;" class="box new-updates">
         <p style="color:#FF8300;font-size: 2rem;font-weight: 700;">New Updates for the month...<i style="margin-left:1rem" class="fa-solid fa-paperclip"></i></p>
         <div class="updates-card">
             <a href="/retire">This month retirement &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
@@ -21,15 +21,26 @@
             <a href="/new-join">New Joinings &nbsp; <i class="fa-solid fa-up-right-from-square"></i></a>
         </div>
     </div>
-    <div id="emp-strength" class="emp-strength">
-        <h1 style="text-align: center;padding:0.8rem;">Employee Statistics</h1>
+    <div id="emp-strength" class="emp-strength box">
+        <h1 style="text-align: left;padding:0.8rem;">Employee Statistics</h1>
+        <div class="line"></div><br>
         <div style="width:45%;margin: auto;background-color: white;border-radius: 10px;">
             <canvas id="genderChart"></canvas>
         </div>
     </div>
-    <h2 id="emp-list" style="text-align: center;padding:0.8rem;">
-        List of Employees &nbsp; <i class="fa-solid fa-user"></i>
-    </h2>
+    <div class="d-flex justify-content-between">
+        <div>
+            <h2 id="emp-list" style="text-align: center;padding:0.8rem;">
+            List of Employees &nbsp; <i class="fa-solid fa-user"></i>
+            </h2>
+        </div>
+        <div>
+            <form class="d-flex" action="/">
+                    <input style="display: inline;" placeholder="Search for someone" type="text" id="search-emp" class="form-control" required>&nbsp;
+                    <button style="display: inline;" class="btn btn-secondary">Search</button>
+            </form>
+        </div>
+    </div>
     <div class="emp-list">
         <table border="black">
             <tr>
@@ -43,47 +54,121 @@
                 <th>Department</th>
                 <th>View</th>
             </tr>
-            <%for(let emp of data){%>
+            <% data.forEach(emp => { %>
+                <tr>
+                    <td><%= emp.id %></td>
+                    <td><%= emp.employee_id %></td>
+                    <td><%= emp.first_name %> <%= emp.middle_name %> <%= emp.last_name %></td>
+                    <td><%= emp.department %></td>
+                    <td><%= emp.work_phone %></td>
+                    <td><%= emp.mobile_phone %></td>
+                    <td><%= emp.work_email %></td>
+                    <td><%= emp.department %></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-<%= emp.id %>">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+
                 <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade" id="modal-<%= emp.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-label-<%= emp.id %>" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                            <h1 style="color:black" class="modal-title fs-5" id="staticBackdropLabel">Employee's area</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h1 style="color:black" class="modal-title fs-5" id="modal-label-<%= emp.id %>">Employee's area</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div style="color:black" class="modal-body">
+                                <% const fields = [
+                                    {label: 'Id', name: 'id', type: 'number'},
+                                    {label: 'Employee id', name: 'employee_id', type: 'text'},
+                                    {label: 'First Name', name: 'first_name', type: 'text'},
+                                    {label: 'Middle name', name: 'middle_name', type: 'text'},
+                                    {label: 'Last Name', name: 'last_name', type: 'text'},
+                                    {label: 'Nationality', name: 'nationality', type: 'number'},
+                                    {label: 'Birthday', name: 'birthday', type: 'date'},
+                                    {label: 'Gender', name: 'gender', type: 'select', options: ['Male', 'Female']},
+                                    {label: 'Marital status', name: 'marital_status', type: 'select', options: ['Married', 'Single', 'Divorced', 'Widowed', 'Other']},
+                                    {label: 'SSS Number', name: 'ssn_num', type: 'text'},
+                                    {label: 'NIC Number', name: 'nic_num', type: 'text'},
+                                    {label: 'Other ID', name: 'other_ID', type: 'text'},
+                                    {label: 'Driving License', name: 'driving_license', type: 'text'},
+                                    {label: 'Driving License Expiry date', name: 'driving_license_exp_date', type: 'date'},
+                                    {label: 'Employment status', name: 'employment_status', type: 'number'},
+                                    {label: 'Job Title', name: 'job_title', type: 'number'},
+                                    {label: 'Pay Grade', name: 'pay_grade', type: 'number'},
+                                    {label: 'Work Station Id', name: 'work_station_id', type: 'text'},
+                                    {label: 'Address 1', name: 'address1', type: 'text'},
+                                    {label: 'Address 2', name: 'address2', type: 'text'},
+                                    {label: 'City', name: 'city', type: 'text'},
+                                    {label: 'Country', name: 'country', type: 'text'},
+                                    {label: 'Province', name: 'province', type: 'number'},
+                                    {label: 'Postal Code', name: 'postal_code', type: 'number'},
+                                    {label: 'Home Phone Number', name: 'home_phone', type: 'number'},
+                                    {label: 'Mobile Phone Number', name: 'mobile_phone', type: 'number'},
+                                    {label: 'Work Phone', name: 'work_phone', type: 'number'},
+                                    {label: 'Work Email', name: 'work_email', type: 'email'},
+                                    {label: 'Private Email', name: 'private_email', type: 'email'},
+                                    {label: 'Joined Date', name: 'joined_date', type: 'date'},
+                                    {label: 'Confirmation Date', name: 'confirmation_date', type: 'date'},
+                                    {label: 'Supervisor', name: 'supervisor', type: 'number'},
+                                    {label: 'Indirect Supervisors', name: 'indirect_supervisors', type: 'text'},
+                                    {label: 'Department', name: 'department', type: 'number'},
+                                    {label: 'Custom 1', name: 'custom1', type: 'text'},
+                                    {label: 'Custom 2', name: 'custom2', type: 'text'},
+                                    {label: 'Custom 3', name: 'custom3', type: 'text'},
+                                    {label: 'Custom 4', name: 'custom4', type: 'text'},
+                                    {label: 'Custom 5', name: 'custom5', type: 'text'},
+                                    {label: 'Custom 6', name: 'custom6', type: 'text'},
+                                    {label: 'Custom 7', name: 'custom7', type: 'text'},
+                                    {label: 'Custom 8', name: 'custom8', type: 'text'},
+                                    {label: 'Custom 9', name: 'custom9', type: 'text'},
+                                    {label: 'Custom 10', name: 'custom10', type: 'text'},
+                                    {label: 'Termination Date', name: 'termination_date', type: 'date'},
+                                    {label: 'Notes', name: 'notes', type: 'text'},
+                                    {label: 'Status', name: 'status', type: 'select', options: ['Active', 'Terminated']},
+                                    {label: 'Ethnicity', name: 'ethnicity', type: 'number'},
+                                    {label: 'Immigration Status', name: 'immigration_status', type: 'number'},
+                                    {label: 'Approver 1', name: 'approver1', type: 'number'},
+                                    {label: 'Approver 2', name: 'approver2', type: 'number'},
+                                    {label: 'Approver 3', name: 'approver3', type: 'number'},
+                                    {label: 'Cadre', name: 'cadre', type: 'text'},
+                                    {label: 'Date of Joining', name: 'doj_drdo', type: 'date'},
+                                    {label: 'DOPR', name: 'dopr', type: 'date'},
+                                    {label: 'Posting Place', name: 'posting_place', type: 'text'},
+                                    {label: 'Image Path', name: 'image_path', type: 'text'},
+                                    {label: 'Remarks', name: 'remarks', type: 'text'},
+                                    {label: 'Last Updated', name: 'lastUpdated', type: 'date'},
+                                    {label: 'Additional Charge 1', name: 'additional_charge1', type: 'number'},
+                                    {label: 'Additional Charge 2', name: 'additional_charge2', type: 'number'},
+                                    {label: 'Additional Charge 3', name: 'additional_charge3', type: 'number'},
+                                    {label: 'Additional Member', name: 'AdditionalMember', type: 'text'}
+                                ]; %>
+
                                 <h3>Hi, hope you are doing well.</h3><br>
-                                <form class="needs-validation" action="/emp/show/:<%=emp.id%>">
+                                <form class="needs-validation" method="post" action="/emp/show">
+                                    <% fields.forEach((field) => { %>
+                                        <input name="employee[<%= field.name %>]" type="hidden" class="form-control" value="<%= emp[field.name] %>">
+                                    <% }) %>
                                     <label class="form-label" for="pswd">Enter your password</label><br><br>
-                                    <input required class="form-control" type="password" name="password" id="pswd"><br><br>
+                                    <input required class="form-control" type="password" name="employee[password]" id="pswd"><br><br>
                                     <div class="invalid-feedback">Please provide password.</div>
                                     <button type="submit" class="btn btn-primary">See ur details</button>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <tr>
-                    <td><%=emp.id%></td>
-                    <td><%=emp.employee_id%></td>
-                    <td><%=emp.first_name%> <%=emp.middle_name%> <%=emp.last_name%></td>
-                    <td><%=emp.department%></td>
-                    <td><%=emp.work_phone%></td>
-                    <td><%=emp.mobile_phone%></td>
-                    <td><%=emp.work_email%></td>
-                    <td><%=emp.department%></td>
-                    <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-eye"></i></button></td>
-                </tr>
-            <%}%>
+            <% }); %>
         </table>
     </div>
     <br><br><br><br><br>
-    <h1 id="org" style="text-align:center;">Know your Organisation&nbsp;<i style="font-size:3rem;color:rgba(255, 255, 0, 0.749)" class="fa-solid fa-chart-simple"></i></h1>
-    <div class="sspl-options">
+    <h1 id="org" style="text-align:center;">Know your Organisation&nbsp;<i style="font-size:3rem;color:rgba(255, 255, 0, 0.749)" class="fa-solid fa-chart-simple"></i></h1><br><br>
+    <div class="box sspl-options">
         <div class="sspl-options-first">
             <ul style="list-style-type: none;">
                 <li id="home" class="chart-item" style="color:black;background-color: rgba(255, 255, 0, 0.749);">Home</li>

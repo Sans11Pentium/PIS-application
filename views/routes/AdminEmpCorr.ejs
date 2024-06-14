@@ -23,11 +23,13 @@
                     <td><%= correction.correction_required %></td>
                     <td><%= correction.date.toLocaleString() %></td>
                     <td>
-                        <a href="/admin/edit/<%= correction.id %>" style="background-color: #a5c5ea;" class="btn">Edit</a>
+                        <a href="/admin/edit" style="background-color: #a5c5ea;" class="btn">Go & edit</a>
                     </td>
                     <td>
-                      <a href="/admin/edit/<%= correction.id %>" style="background-color: #2662a5;color: white;" class="btn btn-primary">Mark as edited</a>
-                  </td>
+                        <form method="put" action="/admin/correction/<%= correction.id %>?_method=DELETE">
+                            <button style="background-color: #2662a5;color: white;" class="btn btn-primary">Mark as edited</button>
+                        </form>
+                    </td>
                 </tr>
             <% }) %>
         </tbody>

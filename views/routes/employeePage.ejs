@@ -1,12 +1,73 @@
-<% layout("/layouts/adminLayout") %>
+<% layout("/layouts/boilerplate") %>
+<style>
+    body {
+        background-color: #2c2c2c; /* Dark Gray */
+        color: #ffffff; /* White text color */
+    }
+    .emp-details {
+        color: white;
+        margin: 20px;
+    }
+    
+    .emp-details h5 {
+        margin: 5px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 5px;
+    }
 
-<% const fields = [
+    .emp-details h5 span.label {
+        font-weight: bold;
+        color: #FFD700; /* Gold color for labels */
+    }
+
+    .emp-details h5 span.value {
+        font-weight: normal;
+        color: #FFFFFF; /* White color for values */
+    }
+
+    .corr-req, .active-corr-req {
+        color: white;
+        margin: 20px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+    .corr-req h4, .corr-req h5, .active-corr-req {
+        margin-bottom: 20px;
+    }
+
+    .corr-req textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #CCCCCC;
+    }
+
+    .corr-req button {
+        background-color: #5A9;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .corr-req button:hover {
+        background-color: #48A;
+    }
+</style>
+<div class="emp-details" style="color: white;">
+    <% const fields = [
         {label: 'Id', name: 'id', type: 'number'},
         {label: 'Employee id', name: 'employee_id', type: 'text'},
         {label: 'First Name', name: 'first_name', type: 'text'},
         {label: 'Middle name', name: 'middle_name', type: 'text'},
         {label: 'Last Name', name: 'last_name', type: 'text'},
-        {label: 'Nationality', name: 'nationality', type: 'text'},
+        {label: 'Nationality', name: 'nationality', type: 'number'},
         {label: 'Birthday', name: 'birthday', type: 'date'},
         {label: 'Gender', name: 'gender', type: 'select', options: ['Male', 'Female']},
         {label: 'Marital status', name: 'marital_status', type: 'select', options: ['Married', 'Single', 'Divorced', 'Widowed', 'Other']},
@@ -54,7 +115,7 @@
         {label: 'Approver 2', name: 'approver2', type: 'number'},
         {label: 'Approver 3', name: 'approver3', type: 'number'},
         {label: 'Cadre', name: 'cadre', type: 'text'},
-        {label: 'Date of Joining', name: 'joined_date', type: 'date'},
+        {label: 'Date of Joining', name: 'doj_drdo', type: 'date'},
         {label: 'DOPR', name: 'dopr', type: 'date'},
         {label: 'Posting Place', name: 'posting_place', type: 'text'},
         {label: 'Image Path', name: 'image_path', type: 'text'},
@@ -65,36 +126,38 @@
         {label: 'Additional Charge 3', name: 'additional_charge3', type: 'number'},
         {label: 'Additional Member', name: 'AdditionalMember', type: 'text'}
     ]; %>
-
-<h2 style="text-align: center;">Edit an Employee's details</h2> <br>
-<form class="row g-3 needs-validation" method="post" action="/admin/edit?_method=PUT" novalidate>
-    <% fields.forEach((field, index) => { 
-        let value = employee[field.name];
-        if (field.type === 'date' && value) {
-            value = new Date(value).toISOString().split('T')[0];
-        }
-    %>
-        <div class="col-md-4">
-            <label for="field<%= index %>" class="form-label"><%= field.label %></label>
-            <%if (field.name=='id' || field.name=='employee_id') {%>
-                <input style="background-color: rgb(236, 228, 228);" value="<%= value %>" name="emp[<%= field.name %>]" type="<%= field.type %>" class="form-control" id="field<%= index %>" readonly>
-            <%}else if (field.type === 'select') { %>
-                <select value="<%= value %>" name="emp[<%= field.name %>]" class="form-select" id="field<%= index %>">
-                    <% field.options.forEach(option => { %>
-                        <option value="<%= option %>" <%= value === option ? 'selected' : '' %>><%= option %></option>
-                    <% }) %>
-                </select>
-            <% } else { %>
-                <input value="<%= value %>" name="emp[<%= field.name %>]" type="<%= field.type %>" class="form-control" id="field<%= index %>">
-            <% } %>
-            <div class="invalid-feedback">
-                Please fill this field!
-            </div>
-        </div>
+    <% fields.forEach((field) => { %>
+        <h5><%= field.label %> : <%= data[field.name] %></h5>
+        
     <% }) %>
-
-    <div class="col-12">
-        <button class="btn btn-primary" type="submit">Edit details</button>
-    </div>
-</form>
-<script src="/js/form_validation.js"></script>
+</div>
+<div class="corr-req" style="color: white;">
+    <h4>Found some mistake in ur details? </h4>
+    <h5>Fill the form below and request for an edit</h5>
+    <form action="/emp/correct" method="post">
+        <input type="hidden" name="emp[empid]" value="<%=data.employee_id%>">
+        <textarea type="text" name="emp[msg]" placeholder="Enter complete detail"></textarea>
+        <button class="btn btn-secondary">Send</button>
+    </form>
+</div>
+<div class="active-corr-req">
+    <h2>Your active requests</h2>
+    <% if(results.length == 0) {%>
+        Seems like there is no active request yet
+    <% }else { %>
+        <table>
+            <th>Correction Id</th>
+            <th>Employee Id</th>
+            <th>Requested correction</th>
+            <th>Date requested</th>
+            <% results.forEach((res) => { %>
+                <tr>
+                    <td><%=res.id%></td>
+                    <td><%=res.employee_id%></td>
+                    <td><%=res.correction_required%></td>
+                    <td><%=res.date%></td>
+                </tr>
+            <% }) %>
+        </table>
+    <% } %>
+</div>

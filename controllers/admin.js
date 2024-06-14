@@ -177,3 +177,17 @@ module.exports.getCorrections = (req, res) => {
         res.render('./routes/AdminEmpCorr.ejs', { corrections: results });
     });
 }
+
+module.exports.makeCorrection = (req, res) => {
+    const id = req.params.id;
+    const query = 'UPDATE empcorrections SET isUpdate = 1 WHERE id = ?'; 
+    connection.query(query, [id], (error, results) => {
+        if (error) {
+            console.error('Error updating the correction:', error);
+            req.flash('error', 'Failed to update correction.');
+            return res.redirect('/admin/correction');
+        }
+        req.flash("success", "Hurray! Successfully updated correction id " + id);
+        res.redirect('/admin/correction');
+    });
+}
