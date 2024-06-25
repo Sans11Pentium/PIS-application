@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const wrapAsync=require("../utils/wrapAsync.js");
 const adminController = require("../controllers/admin.js");
+const {userExists} = require("../middleware.js");
+const passport = require("passport");
 
 //Add emp
 router.route("/add")
@@ -30,5 +32,26 @@ router.route("/correction/:id")
 
 router.route("/correction")
 .get(adminController.getCorrections);
+
+router.route("/login")
+.get(adminController.getAdminLoginForm)
+.post(passport.authenticate(
+    'local',
+    {
+        failureRedirect:'/admin/login-failure',
+        failureFlash: true,
+    }),
+    adminController.adminLogin
+);
+
+router.route("/signup")
+.get(adminController.getAdminSignupForm)
+.post(userExists, adminController.adminSignup);
+
+router.route("/logout")
+.get(adminController.adminLogout);
+
+router.route('/login-failure')
+.get(adminController.adminLoginFailure)
 
 module.exports = router;

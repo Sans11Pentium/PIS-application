@@ -1,5 +1,6 @@
 const connection = require("../routes/dbConnect");
-
+const userConnection = require("../routes/userDbConnect");
+const {genPassword} = require("../middleware");
 //add emp
 //GET
 module.exports.renderAddEmpForm = (req,res)=>{
@@ -190,4 +191,58 @@ module.exports.makeCorrection = (req, res) => {
         req.flash("success", "Hurray! Successfully updated correction id " + id);
         res.redirect('/admin/correction');
     });
+}
+
+module.exports.getAdminLoginForm = (req,res)=>{
+    res.render("./routes/loginAdmin.ejs");
+}
+
+module.exports.adminLogin = (req, res) => {
+    const empQuery = 'SELECT * FROM emplist';
+    connection.query(empQuery, (err, empResults) => {
+        if (err) {
+            req.flash('error', 'Error querying employee list');
+            return res.redirect('/admin/login');
+        }
+        //req.flash("success", "Welcome back. You are logged in!");
+        res.render('routes/AdminPage.ejs', { emplist: empResults });
+    });
+};
+
+module.exports.getAdminSignupForm = (req,res)=>{
+    res.render("./routes/signupAdmin.ejs");
+}
+
+module.exports.adminSignup = (req,res)=>{
+    console.log("Inside post");
+    console.log(req.body.pswd);
+    const saltHash=genPassword(req.body.pswd);
+    console.log(saltHash);
+    const salt=saltHash.salt;
+    const hash=saltHash.hash;
+    userConnection.query('Insert into users(username,hash,salt,isAdmin) values(?,?,?,0) ', [req.body.usnm,hash,salt], function(error, results, fields) {
+        if (error) {
+            console.log("Error");
+        }
+        else{
+            console.log("Successfully Entered");
+        }
+    });
+    req.flash("success","Registered successfully! Please login.");
+    res.redirect('/admin/login');
+}
+
+module.exports.adminLogout = (req, res, next) => {
+    console.log("logging out", res.locals.user);
+    req.logout((err)=>{
+        if(err){
+            return next(err);
+        }
+    }); //delets the user from the session
+    res.redirect('/');
+}
+
+module.exports.adminLoginFailure = (req, res, next) => {
+    req.flash("error", "Incorrect credentials")
+    res.redirect('/admin/login');
 }

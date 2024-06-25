@@ -31,14 +31,14 @@ body{
     margin:10px 0 0 10px;
 }
 .main-body{
-    flex:1;
+    width:100%;
     display: flex;
     justify-content:center;
     margin: auto;
 }
 .main-body-img{
     width:55%;
-    object-fit: cover;
+    object-fit: contain;
     background-image: url("/utils/missile.jpg");
     background-repeat: no-repeat;
     border-radius: 14px;
@@ -116,7 +116,14 @@ body{
     /* display: flex;
     justify-content: center; */
     /* justify-content: space-around; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
+    width:100vw;
+}
+.alert{
+    margin-left: 0;
 }
 @media(max-width:1100px){
     .main-body{
@@ -163,18 +170,19 @@ body{
     width: 100%;
     margin-bottom: 0;
     height: 12rem;
-    background: #000428;
+    /* background: #000428;
     background: -webkit-linear-gradient(to right, #004e92, #000428);
-    background: linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428); */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 4rem 0 4rem 0;
 }
 .socials{
     margin-top: 2rem;
     display: flex;
-    width:25%;
+    width:fit-content;
     justify-content: space-between;
 }
 .socials i{
@@ -197,7 +205,7 @@ body{
     text-decoration: none;
 }
 .footer-head{
-    font-size:1.1rem;
+    font-size:1rem;
     color:#C8F4F9;
     margin-bottom: 2rem;
 }
@@ -276,7 +284,7 @@ tr:hover {
 }
 
 .sspl-options{
-    background-color: #064d5e;
+    background-color: rgba(128, 128, 128, 0.174);
     margin-top: 1rem;
     display: flex;
     justify-content: space-around;
@@ -308,6 +316,13 @@ tr:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+@media(max-width:400px){
+    .footer-head{
+        font-size: 0.9rem;
+        text-align: center;
+        margin: 0 0.5rem 0 0.5rem;
+    }
 }
 @media(max-width:1000px){
     .sspl-options{

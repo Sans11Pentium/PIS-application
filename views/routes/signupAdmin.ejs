@@ -1,17 +1,26 @@
 <%layout("/layouts/boilerplate")-%>
 <link rel="stylesheet" href="/css/Admin.css">
-<div class="main-body-img"></div>
-<div class="main-body-routes">
-    <p class="main-body-img-text">Solid State Physics Laboratory, New Delhi</p>
-    <p style="font-size: 1.3rem;font-weight: 600;">Signup Admin</p>
-    <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
-    <div class="adminLoginform">
-        <form class="form-ele" method="post" action="/admin/show">
-            <input required placeholder="Enter admin ID" class="inpt" type="number" name="id" id="id">
-            <input required placeholder="Enter username" class="inpt" type="text" name="usnm">
-            <input required placeholder="Enter password" class="inpt" name="pswd" type="password"><br>
-            <button class="btn btn-secondary" type="submit">Signup</button><br>
-        </form>
+<style>
+    .parent{
+        display: flex;
+        /* flex-direction: column; */
+        justify-content: center;
+        width: 100vw;
+    }
+</style>
+<!-- <div class="parent"> -->
+    <div class="main-body-routes">
+        <p class="main-body-img-text">Solid State Physics Laboratory, New Delhi</p>
+        <p style="font-size: 1.3rem;font-weight: 600;">Signup Admin</p>
+        <img class="routes" style="border-radius: 14px;" src="/utils/sspl-delhi.jpg" alt="user" height="250" width="350">
+        <div class="adminLoginform">
+            <form class="form-ele" method="post" action="/admin/signup">
+                <!-- <input required placeholder="Enter admin ID" class="inpt" type="number" name="id" id="id"> -->
+                <input required placeholder="Enter username" class="inpt" type="text" name="usnm">
+                <input required placeholder="Enter password" class="inpt" name="pswd" type="password"><br>
+                <button class="btn btn-secondary" type="submit">Signup</button><br>
+            </form>
+        </div>
+        <p class="ques" style="color:white">Already have an admin account? <a href="/admin/login" style="text-decoration: underline;color:#0E86D4;">Sign in instead</a></p>
     </div>
-    <p class="ques" style="color:white">Already have an admin account? <a href="/login" style="text-decoration: underline;color:#0E86D4;">Sign in instead</a></p>
-</div>
+<!-- </div> -->
