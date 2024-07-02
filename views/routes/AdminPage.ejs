@@ -1,4 +1,9 @@
 <% layout("/layouts/adminLayout") %>
+<% if(currUser != undefined){ %>
+    <h3>Hi, admin <i><%= currUser.username %></i>. What do you plan to do today?</h3>
+<% }else{ %>
+    no user has logged in, please refresh the page once! 
+<% } %>
 <div class="container">
         <h1>Employee List</h1>
         <table>

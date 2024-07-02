@@ -1,57 +1,60 @@
 const express = require("express");
 const router = express.Router();
-const wrapAsync=require("../utils/wrapAsync.js");
+const wrapAsync = require("../utils/wrapAsync.js");
 const adminController = require("../controllers/admin.js");
-const {userExists} = require("../middleware.js");
+const { userExists } = require("../middleware.js");
 const passport = require("passport");
 
-//Add emp
+// Add employee
 router.route("/add")
-.get(adminController.renderAddEmpForm)
-.post(adminController.addEmp)
+    .get(adminController.renderAddEmpForm)
+    .post(wrapAsync(adminController.addEmp));
 
-//edit emp details
+// Edit employee details
 router.route("/edit")
-.get(adminController.renderEditForm) //render the form about whose details are to be edited
-.post(adminController.renderEditEmpDetails) //on the basis of is obtained from above form, give edit form for that emp's details
-.put(adminController.editEmp); //submit the above form and make changes in db
+    .get(adminController.renderEditForm)
+    .post(wrapAsync(adminController.renderEditEmpDetails))
+    .put(wrapAsync(adminController.editEmp));
 
-//delete an employee
+// Delete an employee
 router.route("/delete")
-.get(adminController.renderDeleteForm)
-.delete(adminController.deleteEmp);
+    .get(adminController.renderDeleteForm)
+    .delete(wrapAsync(adminController.deleteEmp));
 
-//add a group
+// Add a group
 router.route("/addgrp")
-.get(adminController.renderAddGrpForm)
-.post(adminController.addGrp);
+    .get(adminController.renderAddGrpForm)
+    .post(wrapAsync(adminController.addGrp));
 
-//emp correction
+// Employee correction
 router.route("/correction/:id")
-.get(adminController.makeCorrection);
+    .get(wrapAsync(adminController.makeCorrection));
 
 router.route("/correction")
-.get(adminController.getCorrections);
+    .get(wrapAsync(adminController.getCorrections));
 
+// Admin login
 router.route("/login")
-.get(adminController.getAdminLoginForm)
-.post(passport.authenticate(
-    'local',
-    {
-        failureRedirect:'/admin/login-failure',
-        failureFlash: true,
-    }),
-    adminController.adminLogin
-);
+    .get(adminController.getAdminLoginForm)
+    .post(passport.authenticate(
+        'local',
+        {
+            failureRedirect: '/admin/login-failure',
+            failureFlash: true,
+        }
+    ), wrapAsync(adminController.adminLogin));
 
+// Admin signup
 router.route("/signup")
-.get(adminController.getAdminSignupForm)
-.post(userExists, adminController.adminSignup);
+    .get(adminController.getAdminSignupForm)
+    .post(userExists, wrapAsync(adminController.adminSignup));
 
+// Admin logout
 router.route("/logout")
-.get(adminController.adminLogout);
+    .get(adminController.adminLogout);
 
+// Login failure
 router.route('/login-failure')
-.get(adminController.adminLoginFailure)
+    .get(adminController.adminLoginFailure);
 
 module.exports = router;
